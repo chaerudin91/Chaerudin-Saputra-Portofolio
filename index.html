@@ -1,474 +1,364 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaerudin Saputra | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader"></div>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#1A56A0;--navy-dark:#0C3870;--navy-light:#EBF2FA;
+  --accent:#F59E0B;--text:#1A1A1A;--muted:#555;--border:#E5E7EB;
+  --bg:#fff;--bg2:#F8FAFC;--radius:12px
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--text);background:var(--bg);font-size:15px;line-height:1.6}
+a{color:var(--navy);text-decoration:none}
+nav{background:var(--navy);position:sticky;top:0;z-index:100;padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;flex-wrap:wrap;gap:4px}
+.nav-brand{color:#fff;font-size:16px;font-weight:500;letter-spacing:.5px}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,.8);padding:6px 10px;border-radius:6px;font-size:13px;transition:.2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.15)}
+.hero{background:linear-gradient(135deg,#0C3870 0%,#1A56A0 50%,#2563EB 100%);padding:70px 5% 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:rgba(255,255,255,.04);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:400px;height:400px;background:rgba(255,255,255,.03);border-radius:50%}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-block;background:rgba(245,158,11,.2);color:#FCD34D;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid rgba(245,158,11,.3);margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(28px,5vw,48px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:10px}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:20px;font-weight:400}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.9);padding:5px 12px;border-radius:20px;font-size:12px;border:1px solid rgba(255,255,255,.15)}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:22px;font-weight:600;color:#fff}
+.stat-label{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.3px}
+.hero-links{display:flex;flex-direction:column;gap:10px;flex-shrink:0}
+.btn-primary{background:var(--accent);color:#1A1A1A;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;white-space:nowrap;transition:.2s;display:inline-block;text-align:center}
+.btn-primary:hover{background:#D97706;color:#1A1A1A}
+.btn-outline{background:rgba(255,255,255,.1);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;white-space:nowrap;border:1px solid rgba(255,255,255,.25);transition:.2s;display:inline-block;text-align:center}
+.btn-outline:hover{background:rgba(255,255,255,.2)}
+.section{padding:60px 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-alt{background:var(--bg2)}
+.section-label{font-size:12px;font-weight:500;color:var(--navy);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--text);margin-bottom:8px}
+.section-desc{color:var(--muted);font-size:14px;margin-bottom:36px;max-width:600px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:14px;font-size:14px}
+.about-highlights{display:grid;gap:12px}
+.highlight-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;align-items:flex-start;gap:12px}
+.hl-icon{width:36px;height:36px;background:var(--navy-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.hl-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.hl-desc{font-size:12px;color:var(--muted)}
+.exp-timeline{display:grid;gap:20px}
+.exp-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:22px;position:relative;transition:.2s}
+.exp-card:hover{border-color:var(--navy);box-shadow:0 4px 20px rgba(26,86,160,.08)}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.exp-role{font-size:15px;font-weight:500;color:var(--text)}
+.exp-date{font-size:12px;color:var(--muted);background:var(--bg2);padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.exp-company{font-size:13px;color:var(--navy);font-weight:500;margin-bottom:12px}
+.exp-bullets{list-style:none;display:grid;gap:6px}
+.exp-bullets li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;line-height:1.5}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--navy);font-size:11px;top:2px}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{background:var(--navy-light);color:var(--navy-dark);font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.skill-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.skill-cat{font-size:12px;font-weight:500;color:var(--navy);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+.skill-items{display:flex;flex-wrap:wrap;gap:6px}
+.skill-item{background:var(--bg2);border:1px solid var(--border);color:var(--text);font-size:12px;padding:4px 10px;border-radius:6px}
+.achievements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.ach-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;align-items:flex-start;gap:14px;transition:.2s}
+.ach-card:hover{border-color:var(--navy)}
+.ach-medal{font-size:22px;flex-shrink:0;width:40px;text-align:center}
+.ach-info .ach-place{font-size:12px;font-weight:500;color:var(--accent);text-transform:uppercase;letter-spacing:.3px;margin-bottom:2px}
+.ach-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:2px}
+.ach-year{font-size:12px;color:var(--muted)}
+.cert-list{display:grid;gap:12px}
+.cert-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.cert-icon{width:36px;height:36px;background:var(--navy-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.cert-name{font-size:13px;font-weight:500;color:var(--text)}
+.cert-issuer{font-size:12px;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.contact-info{display:grid;gap:12px}
+.contact-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+.contact-item .ci-icon{width:36px;height:36px;background:var(--navy-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ci-label{font-size:11px;color:var(--muted);margin-bottom:1px}
+.ci-val{font-size:13px;font-weight:500;color:var(--text)}
+.ci-val a{color:var(--navy)}
+.contact-msg{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.contact-msg h3{font-size:16px;font-weight:500;margin-bottom:8px}
+.contact-msg p{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.avail-badge{display:inline-flex;align-items:center;gap:6px;background:#ECFDF5;color:#065F46;border:1px solid #A7F3D0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500}
+.avail-dot{width:7px;height:7px;background:#10B981;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+footer{background:var(--navy-dark);color:rgba(255,255,255,.7);text-align:center;padding:24px 5%;font-size:13px}
+footer a{color:rgba(255,255,255,.9)}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-links{flex-direction:row;flex-wrap:wrap}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-stats{gap:16px}
+  .stat-num{font-size:18px}
+  .nav-links a{padding:5px 7px;font-size:12px}
+}
+@media(max-width:480px){
+  .nav-links{gap:2px}
+  .nav-links a{padding:4px 6px;font-size:11px}
+  .section{padding:44px 4%}
+  .hero{padding:50px 4% 44px}
+}
+.divider{height:3px;background:linear-gradient(90deg,var(--navy),#2563EB,#60A5FA);border:none;margin:0}
+</style>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-brand">CS</span>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Awards</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Open to Opportunities</div>
+      <h1>Chaerudin Saputra</h1>
+      <p class="hero-sub">Data Analyst &nbsp;·&nbsp; Business Intelligence &nbsp;·&nbsp; Product Analyst</p>
+      <div class="hero-badges">
+        <span class="badge">Trisakti University — GPA 3.94/4.00</span>
+        <span class="badge">Information Systems</span>
+        <span class="badge">Jakarta, Indonesia</span>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">60%</div><div class="stat-label">Reporting time reduced</div></div>
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Dashboards built</div></div>
+        <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Awards won</div></div>
+        <div class="stat"><div class="stat-num">3.94</div><div class="stat-label">GPA</div></div>
+      </div>
+    </div>
+    <div class="hero-links">
+      <a class="btn-primary" href="https://www.linkedin.com/in/chaerudin-saputra-40874a22a/" target="_blank">LinkedIn</a>
+      <a class="btn-outline" href="https://chaerudinsaputra-portofolio.vercel.app" target="_blank">Portfolio</a>
+      <a class="btn-outline" href="mailto:chaerudinsaputra91@gmail.com">Email Me</a>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Turning data into decisions</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Results-driven Information Systems graduate from Universitas Trisakti with a GPA of 3.94/4.00, specializing in Data Analytics, Business Intelligence, and Product Analysis. I transform complex, large-scale datasets into strategic insights that drive real business outcomes.</p>
+        <p>At PT Pertamina, I architected 10 Power BI dashboards that reduced manual reporting by 60%. At Ikatan Motor Indonesia, I led data migration QC and QA testing end-to-end. I also authored an HKI-registered RAG-based Academic FAQ Chatbot as my undergraduate thesis.</p>
+        <p>Beyond analytics, I bring leadership experience as Vice President of Academic Affairs at HIM TIF, and a proven competitive mindset with 15+ national and international awards.</p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="hl-icon">📊</div>
+          <div><div class="hl-title">Data Analytics & BI</div><div class="hl-desc">Power BI, Tableau, Looker — end-to-end dashboard development</div></div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-icon">🐍</div>
+          <div><div class="hl-title">Python & Machine Learning</div><div class="hl-desc">Pandas, Scikit-learn, SVM models, NLP, RAG</div></div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-icon">🔍</div>
+          <div><div class="hl-title">QA & Data Migration</div><div class="hl-desc">Bug reporting, data comparison, validation & integrity checks</div></div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-icon">🏆</div>
+          <div><div class="hl-title">Top Achiever</div><div class="hl-desc">1st Place UNIIC Demo Day Cambodia, PILMAPRES 2nd Place 2025</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Work experience</h2>
+    <p class="section-desc">From BUMN energy companies to tech startups — building impact at every stop.</p>
+    <div class="exp-timeline">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Product Analyst</div>
+          <div class="exp-date">Mar 2026 – Apr 2026</div>
+        </div>
+        <div class="exp-company">Ikatan Motor Indonesia</div>
+        <ul class="exp-bullets">
+          <li>Executed rigorous data migration QC by comparing source and target datasets in Excel, safeguarding full data integrity across the migration lifecycle.</li>
+          <li>Spearheaded end-to-end QA testing — documented, triaged, and escalated bugs with precise reproduction steps, accelerating dev resolution cycles.</li>
+          <li>Validated post-migration data consistency to guarantee zero data loss and full alignment with business requirements.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Data Migration QC</span><span class="tag">QA Testing</span><span class="tag">Bug Reporting</span><span class="tag">Excel</span><span class="tag">UAT</span></div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Business Analyst Intern</div>
+          <div class="exp-date">Nov 2025 – Feb 2026</div>
+        </div>
+        <div class="exp-company">OTO by Cardekho</div>
+        <ul class="exp-bullets">
+          <li>Drove end-to-end data collection, cleaning, and validation using Advanced Excel — achieving 100% accuracy for regional strategic decisions.</li>
+          <li>Engineered business process flowcharts to expose operational bottlenecks and deliver improvement proposals that streamlined daily operations.</li>
+          <li>Converted raw data into actionable intelligence for senior stakeholders through rigorous analysis and cross-team collaboration.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Excel Advanced</span><span class="tag">Business Analysis</span><span class="tag">Data Validation</span><span class="tag">Draw.io</span></div>
+      </div>
+
+      <div class="exp-card" style="border-left:3px solid var(--navy)">
+        <div class="exp-header">
+          <div class="exp-role">Data Analyst — Counterparty & Contractual Risk Management</div>
+          <div class="exp-date">Mar 2025 – Aug 2025</div>
+        </div>
+        <div class="exp-company">PT Pertamina (Persero)</div>
+        <ul class="exp-bullets">
+          <li>Architected 10 production-grade Power BI dashboards integrating 10,000+ rows — cutting manual reporting time by 60% and enabling real-time executive risk monitoring.</li>
+          <li>Led data transformation using Power Query, harmonizing fragmented datasets from 3+ sources to 100% analytical readiness for C-level consumption.</li>
+          <li>Served as the bridge between 3+ business user groups and technical teams — translating complex requirements into dashboards with 5+ measurable KPIs.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">SQL</span><span class="tag">KPI Design</span><span class="tag">Risk Analytics</span></div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Data Science Trainee — MSIB Batch 7</div>
+          <div class="exp-date">Sep 2024 – Dec 2024</div>
+        </div>
+        <div class="exp-company">BISA AI Academy</div>
+        <ul class="exp-bullets">
+          <li>Built an SVM-based Heart Health Prediction Model (Python/Scikit-learn) achieving 70% accuracy for early clinical risk detection.</li>
+          <li>Developed an intelligent mental health chatbot using Gemini AI API and NLP as Capstone Project.</li>
+          <li>Designed a sales performance dashboard in Google Looker surfacing critical revenue and product trends.</li>
+          <li>Completed 20+ certifications in ML, data visualization, and analytics.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">NLP</span><span class="tag">Gemini AI</span><span class="tag">Google Looker</span></div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-role">Data & Information Management Lab Assistant</div>
+          <div class="exp-date">Mar 2024 – Jul 2024</div>
+        </div>
+        <div class="exp-company">Universitas Trisakti</div>
+        <ul class="exp-bullets">
+          <li>Mentored 34 students in SQL, data cleaning, PgAdmin, and PostgreSQL — driving a 50% improvement in technical proficiency.</li>
+          <li>Designed assessments with a 90% passing rate through structured, competency-based instruction.</li>
+        </ul>
+        <div class="exp-tags"><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Teaching</span><span class="tag">Data Management</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="section-inner">
+    <div class="section-label">Technical Stack</div>
+    <h2 class="section-title">Skills & tools</h2>
+    <p class="section-desc">A full-stack analytics toolkit spanning data, visualization, programming, and product.</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Data Analysis</div>
+        <div class="skill-items">
+          <span class="skill-item">SQL (MySQL)</span><span class="skill-item">PostgreSQL</span><span class="skill-item">Power Query</span><span class="skill-item">Excel Advanced</span><span class="skill-item">Pivot Tables</span><span class="skill-item">XLOOKUP</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Visualization & BI</div>
+        <div class="skill-items">
+          <span class="skill-item">Power BI</span><span class="skill-item">Tableau</span><span class="skill-item">Google Looker</span><span class="skill-item">Figma</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Programming & AI</div>
+        <div class="skill-items">
+          <span class="skill-item">Python</span><span class="skill-item">Pandas</span><span class="skill-item">Scikit-learn</span><span class="skill-item">NumPy</span><span class="skill-item">Gemini AI API</span><span class="skill-item">RAG / NLP</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">QA & Product</div>
+        <div class="skill-items">
+          <span class="skill-item">Data Migration QC</span><span class="skill-item">Bug Reporting</span><span class="skill-item">UAT</span><span class="skill-item">Data Validation</span><span class="skill-item">Process Mapping</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Tools & Platforms</div>
+        <div class="skill-items">
+          <span class="skill-item">Draw.io</span><span class="skill-item">Odoo</span><span class="skill-item">Pentaho</span><span class="skill-item">VS Code</span><span class="skill-item">Canva</span><span class="skill-item">MS Office</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Soft Skills</div>
+        <div class="skill-items">
+          <span class="skill-item">Analytical Thinking</span><span class="skill-item">Stakeholder Mgmt</span><span class="skill-item">Leadership</span><span class="skill-item">Public Speaking</span><span class="skill-item">Strategic Planning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="achievements">
+  <div class="section-inner">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Awards & achievements</h2>
+    <p class="section-desc">Competing and winning at national and international levels — consistently.</p>
+    <div class="achievements-grid">
+      <div class="ach-card"><div class="ach-medal">🥇</div><div class="ach-info"><div class="ach-place">1st Place · International</div><div class="ach-title">UNIIC Demo Day – Cambodia</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥇</div><div class="ach-info"><div class="ach-place">1st Place · National</div><div class="ach-title">National Paper Competition BEM FTI Trisakti</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥇</div><div class="ach-info"><div class="ach-place">1st Place · National</div><div class="ach-title">Tanggerang Gemilang 2 Pencak Silat Championship</div><div class="ach-year">2024</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥈</div><div class="ach-info"><div class="ach-place">2nd Place · National</div><div class="ach-title">Most Outstanding Student (PILMAPRES) – University Level</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥈</div><div class="ach-info"><div class="ach-place">2nd Place · International</div><div class="ach-title">PakuBumi Open 12 Pencak Silat Championship</div><div class="ach-year">2024</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥈</div><div class="ach-info"><div class="ach-place">2nd Place · National</div><div class="ach-title">National Essay Competition – Jacsen Jambi University</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥉</div><div class="ach-info"><div class="ach-place">3rd Place · International</div><div class="ach-title">UNIIC Hackathon – Uzbekistan</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🥉</div><div class="ach-info"><div class="ach-place">3rd Place · National</div><div class="ach-title">National Hackathon – Kalla Institute</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">📜</div><div class="ach-info"><div class="ach-place">HKI Registered</div><div class="ach-title">Academic FAQ Chatbot (RAG) — Undergraduate Thesis</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">📜</div><div class="ach-info"><div class="ach-place">HKI Registered</div><div class="ach-title">Functional & Non-Functional App Testing Modules</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">🏅</div><div class="ach-info"><div class="ach-place">Finalist & Funded</div><div class="ach-title">Business Incubator Program LPPM Trisakti</div><div class="ach-year">2025</div></div></div>
+      <div class="ach-card"><div class="ach-medal">⭐</div><div class="ach-info"><div class="ach-place">Top 5 · National</div><div class="ach-title">Gadjah Mada Entrepreneur Business Case Competition</div><div class="ach-year">2024</div></div></div>
     </div>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
+    <div style="margin-top:32px">
+      <div class="section-label" style="margin-bottom:14px">Certifications</div>
+      <div class="cert-list">
+        <div class="cert-item"><div class="cert-icon">🏆</div><div><div class="cert-name">CertNexus Data Science Certification</div><div class="cert-issuer">CertNexus — Industry-recognized advanced data science credential</div></div></div>
+        <div class="cert-item"><div class="cert-icon">🤖</div><div><div class="cert-name">20+ AI & Data Analytics Certifications</div><div class="cert-issuer">BISA AI Academy — Machine learning, data visualization, advanced analytics (2024)</div></div></div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">CS</div>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="mobile-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <img src="images/Profile.jpg" alt="Chaerudin Saputra" class="profile-image">
-            <h1>Chaerudin Saputra</h1>
-            <h2>Data Analyst & Information Systems Specialist</h2>
-            <p class="typing-text">Passionate about creating data driven solutions and mitigating contractual & counterpart risks.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Contact Me</a>
-                <a href="#projects" class="btn btn-secondary">View Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image" style="max-width: 350px; margin: 0 auto; display: flex; justify-content: center; align-items: center;">
-                    <img style="width: 350px; height: 350px; object-fit: cover; border-radius: 10px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);" src="images/About.jpg" alt="About Me">
-                </div>
-                <div class="about-text">
-                    <h3>Aspiring Data & Risk Analyst</h3>
-                    <p>I am a sixth-semester Information Systems undergraduate student at Trisakti University, maintaining an exceptional GPA of 3.93/4.00. With a strong foundation in data analysis, teamwork, and leadership, I excel in creating data-driven solutions and have developed a keen interest in risk assessment.</p>
-                    <div class="skills">
-                        <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
-                        <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
-                        <span class="skill-tag"><i class="fas fa-chart-line"></i> Google Looker</span>
-                        <span class="skill-tag"><i class="fas fa-server"></i> Postgres</span>
-                        <span class="skill-tag"><i class="fas fa-pencil-ruler"></i> Figma</span>
-                        <span class="skill-tag"><i class="fas fa-lightbulb"></i> Critical Thinking</span>
-                        <span class="skill-tag"><i class="fas fa-brain"></i> Data Analysis</span>
-                        <span class="skill-tag"><i class="fas fa-balance-scale"></i> Risk Assessment</span>
-                        <span class="skill-tag"><i class="fas fa-users"></i> Leadership</span>
-                        <span class="skill-tag"><i class="fas fa-project-diagram"></i> Project Management</span>
-                        <span class="skill-tag"><i class="fas fa-microphone"></i> Public Speaking</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="timeline mobile-friendly-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Counterpart & Contractual Risk Management Intern</h3>
-                        <h4>PT Pertamina</h4>
-                        <p class="date">Current Position</p>
-                        <ul> <li>Collect and cleanse data to ensure accuracy and reliability for analysis</li> 
-                            <li>Create interactive data visualizations using Power BI to support data-driven decision-making</li> 
-                            <li>Conduct risk analysis based on historical data and visual insights to identify potential issues and mitigation opportunities</li> 
-                            <li>Collaborate with relevant teams to integrate risk management into business processes</li> 
-                            <li>Prepare risk analysis reports and strategic recommendations for management decision-making</li> </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Data Science</h3>
-                        <h4>Bisa AI</h4>
-                        <p class="date">September 2024 - December 2024</p>
-                        <ul>
-                            <li>Designed and implemented a comprehensive sales dashboard with Google Looker, analyzing revenue and product trends</li>
-                            <li>Built an interactive chatbot using Gemini AI API for mental health support, enhancing user engagement</li>
-                            <li>Developed an SVM-based heart health prediction model for clinical insights, achieving 70% accuracy</li>
-                            <li>Collaborated with a team of 4 data scientists to optimize model performance and user experience</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Data and Information Management Laboratory Assistant</h3>
-                        <h4>Trisakti University</h4>
-                        <p class="date">March 2024 - July 2024</p>
-                        <ul>
-                            <li>Trained 34 students in SQL, data cleaning, and visualization tools like PgAdmin, boosting their proficiency by 50%</li>
-                            <li>Evaluated practicum reports, resulting in a passing percentage of 90% among participants</li>
-                            <li>Delivered insights on advanced data management techniques to enhance student learning</li>
-                            <li>Created supplementary learning materials to help students better understand complex concepts</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Private Mathematics Teacher</h3>
-                        <h4>Independent</h4>
-                        <p class="date">August 2022 - Present</p>
-                        <ul>
-                            <li>Improved student exam scores by 30-50% through tailored learning strategies and personalized problem-solving approaches</li>
-                            <li>Simplified complex mathematical concepts, leading to a 90% retention rate of tutored students</li>
-                            <li>Developed customized curriculum materials for students with different learning styles</li>
-                            <li>Maintained long-term relationships with multiple students, demonstrating reliability and effectiveness</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Liaison Officer</h3>
-                        <h4>Ministry of Youth and Sports</h4>
-                        <p class="date">February 2024</p>
-                        <ul>
-                            <li>Coordinated effectively between 12 teams and judges, ensuring smooth communication and event flow</li>
-                            <li>Managed event scheduling and logistics, ensuring all activities ran according to the planned rundown</li>
-                            <li>Resolved on-the-spot issues, demonstrating quick thinking and problem-solving abilities</li>
-                            <li>Received recognition for exceptional organizational and interpersonal skills</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Organizations Section -->
-    <section id="organizations" class="section">
-        <div class="container">
-            <h2 class="section-title">Organizational Experience</h2>
-            <div class="timeline mobile-friendly-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Staff of P3O Department</h3>
-                        <h4>Himpunan Mahasiswa Teknik Informatika</h4>
-                        <p class="date">July 2024 - Present</p>
-                        <ul>
-                            <li>Coordinated and participated in kaderisasi events for new students, fostering leadership development</li>
-                            <li>Played an active role in the University PKKMB event organization, ensuring 90% adherence to timelines</li>
-                            <li>Facilitated orientation activities that helped integrate new students into the university community</li>
-                            <li>Collaborated with cross-departmental teams to organize technical workshops and seminars</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Deputy Ministry of Social and Political Affairs</h3>
-                        <h4>Kepresidenan Mahasiswa Universitas Trisakti</h4>
-                        <p class="date">May 2024 - Present</p>
-                        <ul>
-                            <li>Moderated high-impact events like the Gender Equality Talk Show and Kepresma Upgrading</li>
-                            <li>Managed event sponsorship acquisition and relationship maintenance for University PKKMB activities</li>
-                            <li>Developed and implemented policy initiatives addressing student welfare concerns</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Research and Technology Staff</h3>
-                        <h4>Badan Eksekutif Mahasiswa FTI</h4>
-                        <p class="date">February 2023 - November 2023</p>
-                        <ul>
-                            <li>Analyzed trending technology content and provided knowledge about technology to the public</li>
-                            <li>Led "TechTok" projects to educate the public on technology trends, engaging over 2000 viewers</li>
-                            <li>Organized National Seminars and FTI Fest, attended by 40+ participants</li>
-                            <li>Managed PKM projects, effectively connecting participants with mentors and achieving 90% completion rates</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Vice Chair</h3>
-                        <h4>UKM Silat Usakti</h4>
-                        <p class="date">January 2024 - September 2024</p>
-                        <ul>
-                            <li>Directed organizational operations and supervised key activities for the martial arts club</li>
-                            <li>Actively promoted events, attracting wider participation across the university</li>
-                            <li>Coordinated training schedules and facility management for regular practice sessions</li>
-                            <li>Represented the organization in university-level meetings and negotiations</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Coach</h3>
-                        <h4>Persaudaraan Setia Hati Terate</h4>
-                        <p class="date">November 2021 - January 2024</p>
-                        <ul>
-                            <li>Trained 10 students of various age groups in martial arts techniques and philosophy</li>
-                            <li>Developed effective time management strategies to deliver 90 exercise routines and 35 specialized movements</li>
-                            <li>Served as an examiner in student level advancement evaluations, maintaining high standards</li>
-                            <li>Mentored students in martial arts philosophy and techniques, achieving a 90% advancement rate</li>
-                            <li>Organized and participated in local and regional competitions, helping students achieve recognition</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education" class="section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-box">
-                <h3>Trisakti University</h3>
-                <div class="education-info">
-                    <h4>Bachelor of Information Systems</h4>
-                    <span>August 2022 - May 2026 (Expected)</span>
-                </div>
-                <div class="gpa">GPA: 3.93/4.00</div>
-                <p>Focused on data analytics, information management, and system development. Taking specialized courses in database management, data warehousing, and business intelligence.</p>
-                
-                <div class="achievements">
-                    <h4>Achievements</h4>
-                    <ul>
-                        <li>Students with the Best Semester Achievement Index of the Period 2022/2023</li>
-                        <li>Delegation, PILMAPRES Faculty Level Competition (2024)</li>
-                        <li>2nd Place, Business Plan Competition Dies Natalis Usakti (2024)</li>
-                        <li>Netizen's Favorite, Business Plan Competition, BizzClash Competition (2024)</li>
-                        <li>Top 5, Gadjah Mada Enterpreneur Business Case Competition (2024)</li>
-                        <li>Top 10, KSE Undip Business Plan Competition at national level (2024)</li>
-                        <li>Top 20, Pitch Arena Alumni Summit IPB University (2024)</li>
-                    </ul>
-                </div>
-                
-                <div class="achievements">
-                    <h4>Relevant Courses</h4>
-                    <ul>
-                        <li>Data and Information Management</li>
-                        <li>Basic Data Analytics</li>
-                        <li>Advanced Data Analytics</li>
-                        <li>Data Warehouse</li>
-                        <li>Database Design and Implementation</li>
-                        <li>Business Process Analysis</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project1.png" alt="Sales Dashboard">
-                    </div>
-                    <div class="project-content">
-                        <h3>Sales Analytics Dashboard</h3>
-                        <p>Comprehensive dashboard using Google Looker that provides real-time insights into revenue trends, product performance, and customer behavior patterns.</p>
-                        <div class="project-tags">
-                            <span>Google Looker</span>
-                            <span>Data Visualization</span>
-                            <span>SQL</span>
-                        </div>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project2.png" alt="AI Chatbot">
-                    </div>
-                    <div class="project-content">
-                        <h3>Mental Health Support Chatbot</h3>
-                        <p>Interactive chatbot utilizing Gemini AI API to provide mental health support and resources. The bot can identify emotional distress signals and offer appropriate responses.</p>
-                        <div class="project-tags">
-                            <span>AI</span>
-                            <span>Gemini API</span>
-                            <span>NLP</span>
-                        </div>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project3.png" alt="Risk Framework">
-                    </div>
-                    <div class="project-content">
-                        <h3>UI/UX Projects</h3> 
-                        <p>Designed and developed multiple platforms including:</p> 
-                        <ul> 
-                            <li><strong>Indowande</strong> – A tourism platform that connects users with various travel destinations and experiences in Indonesia</li> 
-                            <li><strong>STHUNA Ternak</strong> – A livestock management platform to support farmers in tracking and managing their livestock business</li> 
-                            <li><strong>SG Childcare</strong> – A platform designed for parents and children to access childcare services, learning resources, and development tools</li> 
-                        </ul> <div class="project-tags"> 
-                            <span>UI/UX Design</span> 
-                            <span>Tourism Platform</span> 
-                            <span>Web & Mobile Applications</span> </div>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/project4.png" alt="Health Prediction Model">
-                    </div>
-                    <div class="project-content">
-                        <h3>Heart Health Prediction Model</h3>
-                        <p>SVM-based machine learning model predicting heart health risks based on patient data, achieving 70% accuracy and providing valuable insights for early intervention.</p>
-                        <div class="project-tags">
-                            <span>Machine Learning</span>
-                            <span>SVM</span>
-                            <span>Healthcare</span>
-                        </div>
-                        <a href="#" class="project-link">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="cert-container">
-                <div class="cert-card">
-                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-                    <div class="cert-details">
-                        <h3>Data Science Professional</h3>
-                        <p>Bisa AI Academy, 2024</p>
-                    </div>
-                    <div class="cert-image">
-                        <img src="images/cert1.png" alt="Data Science Certificate">
-                        <div class="overlay">
-                            <a href="#" class="view-cert">View Certificate</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="cert-card">
-                    <div class="cert-icon"><i class="fas fa-database"></i></div>
-                    <div class="cert-details">
-                        <h3>Data Science Certificate</h3>
-                        <p>CertNexus, 2024</p>
-                    </div>
-                    <div class="cert-image">
-                        <img src="images/cert2.png" alt="Data Science Certificate">
-                        <div class="overlay">
-                            <a href="#" class="view-cert">View Certificate</a>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Awards Section -->
-    <section id="awards" class="section">
-        <div class="container">
-            <h2 class="section-title">Awards & Achievements</h2>
-            <div class="awards-container">
-                <div class="award-group">
-                    <h3><i class="fas fa-trophy"></i> Academic & Professional</h3>
-                    <ul class="award-list">
-                        <li>Students with the Best Semester Achievement Index of the Period 2022/2023</li>
-                        <li>Delegation, PILMAPRES Faculty Level Competition (2024)</li>
-                        <li>2nd Place, Business Plan Competition Dies Natalis Usakti (2024)</li>
-                        <li>Netizen's Favorite, Business Plan Competition, BizzClash Competition (2024)</li>
-                        <li>Top 5, Gadjah Mada Enterpreneur Business Case Competition (2024)</li>
-                        <li>Top 10, KSE Undip Business Plan Competition at national level (2024)</li>
-                        <li>Top 20, Pitch Arena Alumni Summit IPB University (2024)</li>
-                    </ul>
-                </div>
-                
-                <div class="award-group">
-                    <h3><i class="fas fa-medal"></i> Sports & Arts</h3>
-                    <ul class="award-list">
-                        <li>1st Place, Tanggerang Gemilang 2 pencak silat championship</li>
-                        <li>2nd Place, International level PakuBumi Open 12 pencak silat championship</li>
-                        <li>3rd Place, Poster competition at the "PRA 12 MAY" BEM FTI Trisakti event</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out through any of these channels:</p>
-                    <ul class="contact-details">
-                        <li><i class="fas fa-phone"></i> +62 857-7413-0255</li>
-                        <li><i class="fas fa-envelope"></i> chaerudinsaputra91@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/chaerudin-saputra-40874a22a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/heeeru__?igsh=Mml1ZWQzbGtsZmU5" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Chaerudin Saputra. All Rights Reserved.</p>
-            <p>Designed with <i class="fas fa-heart"></i> by Chaerudin Saputra</p>
-        </div>
-    </footer>
-
-    <!-- Certificate Modal -->
-    <div id="certModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <img id="certImage" src="" alt="Certificate">
-        </div>
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Get in touch</h2>
+    <p class="section-desc">Open to data analyst, business analyst, and product analyst roles.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item"><div class="ci-icon">📞</div><div><div class="ci-label">Phone</div><div class="ci-val">085774130255</div></div></div>
+        <div class="contact-item"><div class="ci-icon">✉️</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:chaerudinsaputra91@gmail.com">chaerudinsaputra91@gmail.com</a></div></div></div>
+        <div class="contact-item"><div class="ci-icon">💼</div><div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://www.linkedin.com/in/chaerudin-saputra-40874a22a/" target="_blank">linkedin.com/in/chaerudin-saputra</a></div></div></div>
+        <div class="contact-item"><div class="ci-icon">🌐</div><div><div class="ci-label">Portfolio</div><div class="ci-val"><a href="https://chaerudinsaputra-portofolio.vercel.app" target="_blank">chaerudinsaputra-portofolio.vercel.app</a></div></div></div>
+        <div class="contact-item"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Jakarta, Indonesia</div></div></div>
+      </div>
+      <div class="contact-msg">
+        <h3>Available for new opportunities</h3>
+        <p>I'm actively seeking roles in Data Analytics, Business Intelligence, or Product Analysis where I can leverage my technical expertise to deliver measurable business impact. Let's talk!</p>
+        <div class="avail-badge"><span class="avail-dot"></span>Available now</div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+<footer>
+  <p>Chaerudin Saputra &nbsp;·&nbsp; Information Systems, Universitas Trisakti &nbsp;·&nbsp; GPA 3.94/4.00</p>
+  <p style="margin-top:6px;font-size:12px;opacity:.6">Jakarta, Indonesia &nbsp;·&nbsp; <a href="mailto:chaerudinsaputra91@gmail.com">chaerudinsaputra91@gmail.com</a></p>
+</footer>
