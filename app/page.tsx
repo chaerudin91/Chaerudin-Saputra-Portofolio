@@ -65,7 +65,7 @@ const experiences = [
     company: "OTO by CarDekho",
     period: "Nov 2025 - Feb 2026",
     focus: "Advanced Excel, process mapping, business logic validation",
-    image: "/portfolio-images/oto.jpg",
+    image: "/portfolio-images/Oto.jpg",
     bullets: [
       "Collected, cleaned, and validated business data using PivotTables and lookup formulas.",
       "Mapped business processes into clear flowcharts to identify operational pain points.",
@@ -77,7 +77,7 @@ const experiences = [
     company: "Ikatan Motor Indonesia",
     period: "Mar 2026 - Apr 2026",
     focus: "Data migration QC, QA testing, UAT documentation",
-    image: "/portfolio-images/page-09.jpg",
+    image: "/portfolio-images/page-01.jpg",
     bullets: [
       "Compared source and target datasets to support data migration quality control.",
       "Documented QA findings, bug reproduction steps, and user acceptance testing notes for developers.",
