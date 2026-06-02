@@ -1,30 +1,87 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://chaerudinsaputra-portofolio.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Chaerudin Saputra | Data Analyst Portfolio",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Chaerudin Saputra | Data Analyst Portfolio",
+    template: "%s | Chaerudin Saputra",
+  },
   description:
-    "Portfolio Chaerudin Saputra, Information Systems graduate focused on data analytics, business intelligence, product QA, and management trainee readiness.",
+    "Portfolio Chaerudin Saputra: Data Analyst, Business Intelligence, Business Analyst, Product QA, AI projects, competitions, and Management Trainee readiness.",
+  applicationName: "Chaerudin Saputra Portfolio",
+  authors: [{ name: "Chaerudin Saputra" }],
+  creator: "Chaerudin Saputra",
+  publisher: "Chaerudin Saputra",
   keywords: [
     "Chaerudin Saputra",
-    "Data Analyst",
-    "Business Intelligence",
-    "Power BI",
-    "SQL",
-    "Python",
+    "Chaerudin Saputra Portfolio",
+    "Data Analyst Indonesia",
+    "Data Analyst Jakarta",
+    "Business Intelligence Portfolio",
+    "Power BI Portfolio",
+    "SQL Portfolio",
+    "Python Data Analyst",
+    "Business Analyst Portfolio",
+    "Product Analyst Portfolio",
     "Management Trainee",
-    "Portfolio",
+    "Universitas Trisakti Information Systems",
+    "Pertamina Data Analyst Intern",
+    "BISA AI Academy Data Science",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Chaerudin Saputra | Data Analyst Portfolio",
     description:
-      "Data analytics, BI dashboards, business analysis, AI projects, achievements, and leadership portfolio.",
+      "Data analytics, Power BI dashboards, business analysis, AI projects, competition achievements, leadership, and contact information.",
+    url: siteUrl,
+    siteName: "Chaerudin Saputra Portfolio",
     type: "website",
+    locale: "en_ID",
+    images: [
+      {
+        url: "/portfolio-images/page-01.webp",
+        width: 1600,
+        height: 900,
+        alt: "Chaerudin Saputra portfolio cover",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chaerudin Saputra | Data Analyst Portfolio",
+    description: "Data Analyst, BI, AI, Product QA, and Management Trainee portfolio.",
     images: ["/portfolio-images/page-01.webp"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.svg",
+  },
+  manifest: "/manifest.webmanifest",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f172a",
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>{children}</body>
