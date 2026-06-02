@@ -53,7 +53,7 @@ const experiences = [
     company: "PT Pertamina (Persero)",
     period: "Mar 2025 - Aug 2025",
     focus: "Power BI, Power Query, KPI dashboard, data transformation",
-    image: "/portfolio-images/page-09.jpg",
+    image: "/portfolio-images/pertamina.jpg",
     bullets: [
       "Built and maintained interactive dashboards to support internal monitoring and data-driven reporting.",
       "Cleaned, transformed, and consolidated raw datasets using Excel and Power Query before visualization.",
@@ -65,7 +65,7 @@ const experiences = [
     company: "OTO by CarDekho",
     period: "Nov 2025 - Feb 2026",
     focus: "Advanced Excel, process mapping, business logic validation",
-    image: "/portfolio-images/page-13.jpg",
+    image: "/portfolio-images/oto.jpg",
     bullets: [
       "Collected, cleaned, and validated business data using PivotTables and lookup formulas.",
       "Mapped business processes into clear flowcharts to identify operational pain points.",
