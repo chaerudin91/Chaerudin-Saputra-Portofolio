@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Chaerudin Saputra",
   },
   description:
-    "Portfolio Chaerudin Saputra: Data Analyst, Business Intelligence, Business Analyst, Product QA, AI projects, competitions, and Management Trainee readiness.",
+    "Portfolio Chaerudin Saputra - Data Analyst, Business Intelligence, Business Analyst, Product QA, AI projects, competitions, leadership, and Management Trainee readiness.",
   applicationName: "Chaerudin Saputra Portfolio",
   authors: [{ name: "Chaerudin Saputra" }],
   creator: "Chaerudin Saputra",
@@ -27,36 +27,27 @@ export const metadata: Metadata = {
     "Python Data Analyst",
     "Business Analyst Portfolio",
     "Product Analyst Portfolio",
-    "Management Trainee",
+    "Management Trainee Indonesia",
     "Universitas Trisakti Information Systems",
     "Pertamina Data Analyst Intern",
     "BISA AI Academy Data Science",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Chaerudin Saputra | Data Analyst Portfolio",
     description:
-      "Data analytics, Power BI dashboards, business analysis, AI projects, competition achievements, leadership, and contact information.",
+      "Explore data analytics, Power BI dashboards, business analysis, AI projects, competition achievements, leadership, and direct contact information.",
     url: siteUrl,
     siteName: "Chaerudin Saputra Portfolio",
     type: "website",
     locale: "en_ID",
-    images: [
-      {
-        url: "/portfolio-images/page-01.webp",
-        width: 1600,
-        height: 900,
-        alt: "Chaerudin Saputra portfolio cover",
-      },
-    ],
+    images: [{ url: "/portfolio-images/page-01.jpg", width: 1440, height: 810, alt: "Chaerudin Saputra portfolio cover" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Chaerudin Saputra | Data Analyst Portfolio",
     description: "Data Analyst, BI, AI, Product QA, and Management Trainee portfolio.",
-    images: ["/portfolio-images/page-01.webp"],
+    images: ["/portfolio-images/page-01.jpg"],
   },
   robots: {
     index: true,
@@ -69,9 +60,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: "/favicon.svg",
-  },
+  icons: { icon: "/favicon.svg" },
   manifest: "/manifest.webmanifest",
 };
 
