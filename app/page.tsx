@@ -565,9 +565,8 @@ export default function Page() {
 
         <section id="gallery" className="section-shell">
           <SectionHeading
-            eyebrow="Full Portfolio Gallery"
-            title="All Canva/PDF pages included with filter and modal preview."
-            description="Replace JPG files in public/portfolio-images with Canva exports using the same filenames if you want to update the visuals."
+            eyebrow="Portfolio"
+            title="Portfolio Gallery"
           />
           <div className="filter-row" aria-label="Gallery filters">
             {galleryGroups.map((group) => (
@@ -598,28 +597,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="section-shell upload-guide muted-block">
-          <SectionHeading
-            eyebrow="Image Guide"
-            title="Want to insert your own Canva images?"
-            description="Export from Canva as JPG or PNG, rename the files, and put them in the folder below. No code edit is needed when filenames stay the same."
-          />
-          <div className="guide-grid">
-            <div className="guide-card">
-              <strong>1. Export from Canva</strong>
-              <p>Choose JPG or PNG. Use 16:9 landscape size for best result.</p>
-            </div>
-            <div className="guide-card">
-              <strong>2. Rename file</strong>
-              <p>Example: Work Experience = <code>page-09.jpg</code>, Ekspora = <code>page-02.jpg</code>.</p>
-            </div>
-            <div className="guide-card">
-              <strong>3. Replace folder</strong>
-              <p>Move the file into <code>public/portfolio-images/</code> and redeploy to Vercel.</p>
-            </div>
-          </div>
-        </section>
-
+       
         <section id="contact" className="contact-section section-shell">
           <div className="contact-panel reveal">
             <p className="eyebrow">Contact</p>
